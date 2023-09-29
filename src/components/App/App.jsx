@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 // import { AppWrapper } from './App.styled';
 import { useDispatch} from "react-redux";
 import { Layout } from 'components/Layout';
-import HomePage from 'Pages/HomePage';
+import  HomePage from 'Pages/HomePage';
 import ContactPage from 'Pages/ContactPage';
 import RegisterPage from 'Pages/RegisterPage';
 import LoginPage from 'Pages/LoginPage';

@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from 'hooks';
 
-const Navigation = ({ isAuthenticated }) => {
+const Navigation = () => {
+  const { isLoggedIn } = useAuth();
   return (
     <nav>
       <ul>
-        {isAuthenticated ? (
+        {isLoggedIn ? (
           <>
             <li>
               <Link to="/contacts">Contacts</Link>
