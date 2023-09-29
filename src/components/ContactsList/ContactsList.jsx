@@ -6,6 +6,7 @@ import { removeContact, fetchAllContacts} from 'Redux/Operations';
 
 
 
+
 export const ContactsList = () => {
    const selectedContact = useSelector(selectVisibleContacts);
   const dispatch = useDispatch();
