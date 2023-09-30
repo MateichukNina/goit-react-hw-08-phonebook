@@ -12,6 +12,7 @@ import { refreshUser } from 'Redux/Auth/authOperations';
 import { useAuth } from 'hooks/useAuth';
 import { RestrictedRoute } from 'components/RestrictedRoute';
 import { PrivateRoute } from 'components/PrivatRoute';
+import { AppBar } from 'components/AppBar';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,10 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? <b>Refreshing user...</b> : (
+    <div><AppBar/>
+    {/* <h1>Phone</h1> */}
     <Routes>
+      
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="/register" element={<RegisterPage />} />
@@ -40,5 +44,7 @@ export const App = () => {
         />
       </Route>
     </Routes>
+    </div>
+    
   );
 };

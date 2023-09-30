@@ -1,49 +1,38 @@
- import { useState } from "react";
- import React from 'react';
- import { useDispatch } from "react-redux";
- import {register} from 'Redux/Auth/authOperations'
+import { useDispatch } from 'react-redux';
+import { register } from 'Redux/Auth/authOperations';
 
- export  function FormRegistration() {
-   const dispatch = useDispatch;
-   const [name, setName] = useState('');
-   const [email, setEmail] = useState('');
-   const [password, setPassword] = useState('');
 
-   const handleSubmit = evt =>{
-     evt.preventDefault();
-     dispatch(register({name, email, password}))
-    setName('');
-     setEmail('');
-     setPassword('');
-   }
+export const RegisterForm = () => {
+  const dispatch = useDispatch();
 
-   const handleNameChange = evt => {
-     setName(evt.target.value);
-   }
-
-   const handleEmailChange = evt => {
-     setEmail(evt.target.value);
-   }
-
-  const handlePasswordChange = evt => {
-     setPassword(evt.target.value);
-   }
+  const handleSubmit = e => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    dispatch(
+      register({
+        name: form.elements.name.value,
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    );
+    form.reset();
+  };
 
   return (
-     <div>
-       <h2>Registration</h2>
-       <form onSubmit={handleSubmit}>
-         <label>
-           <input type="text" name="name" value={name} onChange={handleNameChange}/>
-         </label>
-        <label>
-           <input type="email" name="email" value={email} onChange={handleEmailChange}/>
-         </label>
-         <label>
-           <input type="password" name="password" value={password} onChange={handlePasswordChange}/>
-         </label>
-         <button type="submit">Submit</button>
-       </form>
-     </div>
-  )
- }
+    <form  onSubmit={handleSubmit} autoComplete="off">
+      <label >
+        Username
+        <input type="text" name="name" />
+      </label>
+      <label >
+        Email
+        <input type="email" name="email" />
+      </label>
+      <label>
+        Password
+        <input type="password" name="password" />
+      </label>
+      <button type="submit">Register</button>
+    </form>
+  );
+};
