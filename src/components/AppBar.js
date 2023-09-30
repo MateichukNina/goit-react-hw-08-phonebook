@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-import { useAuth } from "hooks/useAuth";
+// import { useAuth } from "hooks/useAuth";
 
 export const AppBar = () => {
-  const { isLoggedIn } = useAuth();
+  // const { isLoggedIn } = useAuth();
 
   return (
       <header>
