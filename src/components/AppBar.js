@@ -1,6 +1,5 @@
-import { AuthNav } from "./AuthNav";
-import Navigation from "./Navigations";
-import { UserMenu } from "./UserMenu";
+import { Link } from "react-router-dom";
+
 import { useAuth } from "hooks/useAuth";
 
 export const AppBar = () => {
@@ -8,8 +7,10 @@ export const AppBar = () => {
 
   return (
       <header>
-          <Navigation />
-          {isLoggedIn ? <UserMenu/> : <AuthNav/>} 
+        <Link to='/'>Home</Link>
+        <Link to='contacts'>Contacts</Link>
+        <Link to='register'>Registration</Link>
+        <Link to='login'>LogIn</Link>
       </header>
   )
 }

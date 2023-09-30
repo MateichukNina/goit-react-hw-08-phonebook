@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import { AppBar } from './AppBar';
 
 export const Layout = () => {
+  return(
   <div>
     <AppBar/>
     <main>
@@ -11,5 +12,5 @@ export const Layout = () => {
         <Outlet/>
       </Suspense>
     </main>
-  </div>
+  </div>)
 }
