@@ -1,16 +1,16 @@
-import { Link } from "react-router-dom";
+import {Navigation} from './Navigations';
+import { UserMenu } from './UserMenu';
+import { AuthNav } from './AuthNav';
+import { useAuth } from 'hooks';
 
-// import { useAuth } from "hooks/useAuth";
 
 export const AppBar = () => {
-  // const { isLoggedIn } = useAuth();
+  const { isLoggedIn } = useAuth();
 
   return (
-      <header>
-        <Link to='/'>Home</Link>
-        <Link to='contacts'>Contacts</Link>
-        <Link to='register'>Registration</Link>
-        <Link to='login'>LogIn</Link>
-      </header>
-  )
-}
+    <header >
+       <Navigation /> 
+      {isLoggedIn ? <UserMenu /> : <AuthNav />}
+    </header>
+  );
+};
