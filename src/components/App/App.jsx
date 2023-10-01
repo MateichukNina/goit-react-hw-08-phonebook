@@ -12,7 +12,7 @@ import { refreshUser } from 'Redux/Auth/authOperations';
 import { useAuth } from 'hooks/useAuth';
 import { RestrictedRoute } from 'components/RestrictedRoute';
 import { PrivateRoute } from 'components/PrivatRoute';
-
+import { AppWrapper } from './App.styled';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -25,14 +25,36 @@ export const App = () => {
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path="/contacts" element={<PrivateRoute redirectTo="/login" component={<ContactPage />} />} />
-        <Route path="/register" element={ <RestrictedRoute redirectTo="/contacts" component={<RegisterPage />} />} />
-        <Route path="/login" element={ <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />} />
-        
-      </Route>
-    </Routes>
+    <AppWrapper>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute redirectTo="/login" component={<ContactPage />} />
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<RegisterPage />}
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<LoginPage />}
+              />
+            }
+          />
+        </Route>
+      </Routes>
+    </AppWrapper>
   );
 };

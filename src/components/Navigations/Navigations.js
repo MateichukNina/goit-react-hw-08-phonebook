@@ -1,20 +1,22 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from 'hooks';
+import { LogOutBtn } from '../UserMenu/UserMenu.styled';
+import { NavWrap } from './Navigations.styled';
 
 export const Navigation = () => {
   const { isLoggedIn } = useAuth();
 
   return (
-    <nav>
+    <NavWrap>
       <NavLink  to="/">
-        Home
+       <LogOutBtn>Home</LogOutBtn>
       </NavLink>
       {isLoggedIn && (
         <NavLink  to="/contacts">
-          Contacts
+         <LogOutBtn>Contacts</LogOutBtn>
         </NavLink>
       )}
-    </nav>
+    </NavWrap>
   );
 };
